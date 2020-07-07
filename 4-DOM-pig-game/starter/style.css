@@ -137,14 +137,40 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
+.btn-new { top: 30px;}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
-.dice {
+.form {
+        position: absolute;
+        width: 200px;
+        top: 70px;
+        left: 52%;
+        transform: translateX(-50%);
+        color: #555;
+        background: none;
+        border: none;
+        font-family: Lato;
+        font-size: 20px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: 300;
+        transition: background-color 0.3s, color 0.3s;
+}
+
+.dice1 {
     position: absolute;
     left: 50%;
-    top: 178px;
+    top: 150px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+.dice2 {
+    position: absolute;
+    left: 50%;
+    top: 275px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);

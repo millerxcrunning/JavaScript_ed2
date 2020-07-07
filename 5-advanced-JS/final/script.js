@@ -1,17 +1,28 @@
 /////////////////////////////
 // Lecture: Function constructor
 /*
+// Object literal
 var john = {
     name: 'John',
     yearOfBirth: 1990,
     job: 'teacher'
 };
 
+// the following works because john.name is an array of characters
+console.log("the  of Person constructor are:")
+for(let property of john.name)
+    console.log(property);
+
+// Function constuctor
 var Person = function(name, yearOfBirth, job) {
     this.name = name;
     this.yearOfBirth = yearOfBirth;
     this.job = job;
 }
+
+// the prototype property of an object is where we put methods and properties that we want other objects to inherit 
+// Foo.prototype is where the prototype chain of a new instance of Foo, foo, should point to.
+// foo._proto points to the same place as Foo.prototype, which is the thing holding the constructor and ._proto_
 
 Person.prototype.calculateAge  = function() {
     console.log(2016 - this.yearOfBirth);
@@ -19,6 +30,11 @@ Person.prototype.calculateAge  = function() {
 
 Person.prototype.lastName = 'Smith';
 
+Person.middleName = 'Wesley';
+
+// Instantiation
+// Empty object created, then function is called which creates an execution context, which gets a "this" variable. 
+// The new operator takes the "this"  variable of the function and points it to the new empty object.
 var john = new Person('John', 1990, 'teacher');
 var jane = new Person('Jane', 1969, 'designer');
 var mark = new Person('Mark', 1948, 'retired');
@@ -26,12 +42,50 @@ var mark = new Person('Mark', 1948, 'retired');
 john.calculateAge();
 jane.calculateAge();
 mark.calculateAge();
+// none of the above objects have the calculateAge methods attached to them, but the method    is in all of their prototype
+
+// the following returns false because calculateAge is only part of their prototype
+console.log("mark \"calculateAge\" is enumerable");
+console.log(mark.propertyIsEnumerable('calculateAge'));
+// the following returns true b/c name is one of mark's properties
+console.log("mark \"name\" is enumerable");
+console.log(mark.propertyIsEnumerable('name'));
+console.log("mark.hasOwnProperty(\"job\")");
+console.log(mark.hasOwnProperty("job"));
+
+console.log("john.middleName is");
+console.log(john.middleName);
+console.log("jane.middleName is");
+console.log(jane.middleName);
+console.log("mark.middleName is");
+console.log(mark.middleName);
+
+// the following returns false because calculateAge is only part of their prototype
+console.log("mark \"middleName\" is enumerable");
+console.log(mark.propertyIsEnumerable('middleName'));
 
 console.log(john.lastName);
 console.log(jane.lastName);
 console.log(mark.lastName);
-*/
 
+console.log("mark \"lastName\" is enumerable");
+console.log(mark.propertyIsEnumerable('lastName'));
+
+console.log("the properties of Person constructor are:")
+for(let property in Person)
+    console.log(property);
+console.log("the properties of john are:")
+for(let property in john)
+    console.log(property);
+console.log("the properties of mark are:")
+for(let property in mark)
+    console.log(property);
+console.log("the properties of mark are:")
+// the following does not work because john is an Object, and Objects don't have built in      iterators, which for of loops rely on. Use for in loops for enumeration of properties.
+for(let property of john)
+    console.log(property);
+// the above returns "Uncaught TypeError: john is not iterable"
+    
 
 
 /////////////////////////////
@@ -137,7 +191,33 @@ console.log(ages);
 console.log(rates);
 */
 
+var years = [1988, 1985, 1997, 1999];
 
+function arrayCalculator(array)
+{
+    var arrayResult = [];
+    for (var i = 0; i < array.length; i++) 
+    {
+        arrayResult.push(2020-array[i]);
+        console.log(2020-array[i]);
+    }
+    return arrayResult;
+}
+
+console.log(arrayCalculator(years));
+
+function canRentCarWithNoAddedFee(array)
+{
+    var arrayResult = [];
+    for (var i = 0; i < array.length; i++) 
+    {
+        arrayResult.push((2020-array[i]) >=25 ? true : false);
+        console.log((2020-array[i]) >=25 ? true : false);
+    }
+    return arrayResult;
+}
+
+console.log(canRentCarWithNoAddedFee(years));
 
 /////////////////////////////
 // Lecture: Functions returning functions
@@ -168,6 +248,7 @@ designerQuestion('jane');
 designerQuestion('Mark');
 designerQuestion('Mike');
 
+// Following line is very important point to know!
 interviewQuestion('teacher')('Mark');
 */
 
@@ -201,6 +282,10 @@ game();
 
 /////////////////////////////
 // Lecture: Closures
+// The scope chain always stays intact!
+// Inner functions always get access to the parameters and 
+// variables of the functions they are defined within.
+
 /*
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
@@ -220,6 +305,10 @@ retirementIceland(1990);
 
 //retirement(66)(1990);
 
+// Rewriting the above interviewQuestion function using the power of closures,
+// we can access the job variable inside the return function. Therefore, only
+// one return statement is needed, instead of the three return statements by moving 
+// the job if/else statements inside the return
 
 function interviewQuestion(job) {
     return function(name) {
