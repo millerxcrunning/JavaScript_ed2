@@ -32,6 +32,19 @@ function driversLicenseES6(passedTest){
 
 driversLicenseES6(1);
 
+function checkScope() {
+    'use strict';
+    let i = 'function scope';
+    if (true) {
+      let i = 'block scope';
+      console.log('Block scope i is: ', i);
+    }
+    console.log('Function scope i is: ', i);
+    return i;
+  }
+  
+  console.log(checkScope());
+
 // Blocks & IIFES
 //Up until ES6, use IIFES to ensure data privacy
 // Now, use blocks to create data privacy
@@ -173,6 +186,17 @@ const [age2, retirement] = calcRetirementAge(1990);
 console.log(age2);
 console.log(retirement);
 
+const HIGH_TEMPERATURES = {
+    yesterday: 75,
+    today: 77,
+    tomorrow: 80
+  };
+  
+/*find properties named today and tomorrow in the object HIGH_TEMPERATURES and assign their values to variables of the same names. That is what destructuring of objects is. You are selecting specific properties from an object and assign the values of those object properties to variables of the same names.*/
+const {today, tomorrow} = HIGH_TEMPERATURES;
+  
+  
+
 const boxes = document.querySelectorAll('.box');
 
 //ES5
@@ -224,3 +248,69 @@ console.log("of the people in the array, position ", ages.findIndex(e => e >=18)
 
 let a = ['a', 'b', 'c'];
 console.log(...a);
+
+function rangeOfNumbers(startNum, endNum) {
+    if (startNum > endNum) {
+      return [];
+    } else {
+      const countArray = rangeOfNumbers(startNum + 1, endNum);
+      countArray.unshift(startNum);
+      return countArray;
+    }
+  };
+  
+  console.log(rangeOfNumbers(1, 5));
+
+  var twoSumV1 = function(nums, target) {
+    for(let i = 0; i < nums.length-1; i+=1)
+        {  
+            console.log(`i = ${i} `);
+            for (let j = 1; j < nums.length; j+=1)
+                {
+                    if( i !== j)
+                    {
+                        console.log(`target is ${target}, i = ${i}, j = ${j}, adding ${nums[i]} + ${nums[j]} = ${nums[i] + nums[j]} `);
+                        if ((nums[i] + nums[j]) === target) return [i, j]; 
+                    }
+                }
+        }
+};
+
+const twoSumV2 = function(nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+      for (let j = i + 1; j < nums.length; j++) {
+        if (nums[i] + nums[j] === target) {
+          return [i, j];
+        }
+      }
+    }
+    
+    return [];
+  };
+
+console.log("twoSumV1 results = " , twoSumV1([2, 7, 11, 15], 9 ));
+console.log("twoSumV1 results = " , twoSumV1([2, 5, 5, 11], 10 ));
+
+console.log("twoSumV2 results = " , twoSumV2([2, 7, 11, 15], 9 ));
+console.log("twoSumV2 results = " , twoSumV2([2, 5, 5, 11], 10 ));
+
+// leetcode addTwoNumbers
+// how do you pass the two linkedLists into the function??
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    console.log(l1);
+    console.log(l1.next);
+};
+
+console.log(addTwoNumbers([2, 4, 3],  [5, 6, 4]));
