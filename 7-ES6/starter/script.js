@@ -314,3 +314,47 @@ var addTwoNumbers = function(l1, l2) {
 };
 
 console.log(addTwoNumbers([2, 4, 3],  [5, 6, 4]));
+
+var runningSumV2 = function(nums) {
+    let total = [];
+    total[0] = nums[0];
+    for(let i = 1; i < nums.length; i +=1)
+        {
+            if(total[i-1] === undefined) total[i] = nums[i];
+            total[i] = total[i-1] + nums[i];
+            console.log("nums[" + i + "]", nums[i]);
+            console.log("adding " + total[i-1] + " + " + nums[i]);
+            console.log("total", total);
+            console.log("total[" + i + "]", total[i]);
+            console.log("total[" + i + "-1]", total[i-1]);
+            console.log("\n");
+            
+        }
+    return total;
+};
+
+console.log("runningSumV2 returns ", runningSumV2([1,2,3]));
+console.log("runningSumV2 returns ", runningSumV2([1,2,3,4,5,6]));
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numIdenticalPairs = function(nums) {
+    let good = 0;
+    for (let i = 0; i < nums.length-1; i+=1)
+    {
+        for(let j = 1; j < nums.length; j+=1)
+        {
+            console.log("nums[" + i + "] = " + nums[i] + ", nums[" + j +"] = " + nums[j]);
+            if((nums[i] === nums[j]) && (i < j)) 
+            {
+                good += 1;
+                console.log(good);
+            }
+        }
+    }
+    return good;
+};
+
+console.log(numIdenticalPairs([1,2,3,1,1,3]));
