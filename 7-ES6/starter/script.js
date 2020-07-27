@@ -32,19 +32,6 @@ function driversLicenseES6(passedTest){
 
 driversLicenseES6(1);
 
-function checkScope() {
-    'use strict';
-    let i = 'function scope';
-    if (true) {
-      let i = 'block scope';
-      console.log('Block scope i is: ', i);
-    }
-    console.log('Function scope i is: ', i);
-    return i;
-  }
-  
-  console.log(checkScope());
-
 // Blocks & IIFES
 //Up until ES6, use IIFES to ensure data privacy
 // Now, use blocks to create data privacy
@@ -358,3 +345,137 @@ var numIdenticalPairs = function(nums) {
 };
 
 console.log(numIdenticalPairs([1,2,3,1,1,3]));
+
+/**
+ * Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
+
+Return the array in the form [x1,y1,x2,y2,...,xn,yn].
+
+ * @param {number[]} nums
+ * @param {number} n
+ * @return {number[]}
+ */
+var shuffle = function(nums, n) {
+    let newArray = [];
+    let j = n;
+    console.log("original array = " + nums);
+    for(let i = 0; i < n; i += 1)
+    {
+        newArray.push(nums[i]);
+        newArray.push(nums[j]);
+        console.log("nums[i] = " + nums[i]);
+        console.log("nums[j] =" + nums[j]);
+        console.log('newArray = ' + newArray);
+        console.log("i = " + i + " and j = " + j );
+        j+=1;
+
+    }
+    return newArray;
+};
+
+console.log(shuffle([1,4,6,2,5,7], 3));
+
+/*Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
+
+For each kid check if there is a way to distribute extraCandies among the kids such that he or she can have the greatest number of candies among them. Notice that multiple kids can have the greatest number of candies.*/
+
+var kidsWithCandies = function(candies, extraCandies) {
+    let yesOrNo = [];
+    let max = Math.max(...candies);
+    console.log("max value of candies array is " + max);
+    //for (let e of candies) {
+    candies.forEach(e => {
+        if(e + extraCandies >= max) yesOrNo.push(true);
+        else yesOrNo.push(false);
+        console.log("return array is currently " + yesOrNo);
+    });
+    return yesOrNo;
+};
+
+console.log(kidsWithCandies([1,2,3,4,5,1,2,3], 1));
+
+/**
+ * Given a valid (IPv4) IP address, return a defanged version of that IP address. A defanged IP address replaces every period "." with "[.]"
+ * @param {string} address
+ * @return {string}
+ */
+var defangIPaddr = function(address) {
+    return address.replace(/\./g,"[.]");
+};
+
+console.log(defangIPaddr("1.5.196.101.8"));
+
+/**
+ * Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+ * @param {number} num
+ * @return {number}
+ */
+var numberOfSteps  = function(num) {
+    let i = 0;
+    console.log("num is originally " + num);
+    for (; num !== 0; i +=1)
+    {
+    ((num % 2) === 0) ? (num = num / 2) : (num = num - 1);
+    console.log("num is now " + num + " after " + (i+1) + " steps");
+    }
+    return i;
+};
+
+console.log(numberOfSteps(8));
+
+/**
+ * You're given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.
+
+The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters are case sensitive, so "a" is considered a different type of stone from "A".
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    let matches = 0;
+    for(let currJ of J)
+    {
+        for(let currS of S)
+        {
+            if(currJ === currS) 
+            {
+                matches +=1;
+                console.log(currJ + " matches " + currS);
+                console.log("number of matches is now " + matches);
+            }
+        }
+    }
+    return matches;
+};
+
+console.log("number of matches is " + numJewelsInStones("aA", "aAAbbb"));
+
+/**
+ * Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i]. Return the answer in an array.
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var smallerNumbersThanCurrent = function(nums) {
+    console.log("original array is " + nums);
+    let matches = [];
+    for(let i = 0; i < nums.length; i +=1)
+    {
+        for(let j = 0; j < nums.length; j +=1)
+        {
+            if(i === j) break;
+
+            else 
+            {
+                if (nums[i] < nums[j]) 
+                {
+                    matches[i] +=1;
+                    console.log(nums[i] + " is less than " + nums[j]);
+                    console.log("how many smaller at each position is now " + matches);
+                }
+            }
+        }
+    }
+    return matches;
+};
+
+console.log("how many smaller at each position is " + smallerNumbersThanCurrent([8,1,2,2,3]));
