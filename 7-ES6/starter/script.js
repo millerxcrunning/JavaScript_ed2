@@ -1,3 +1,5 @@
+/*
+
 //let & const
 
 function driversLicenseES5(passedTest){
@@ -180,11 +182,11 @@ const HIGH_TEMPERATURES = {
   };
   
 /*find properties named today and tomorrow in the object HIGH_TEMPERATURES and assign their values to variables of the same names. That is what destructuring of objects is. You are selecting specific properties from an object and assign the values of those object properties to variables of the same names.*/
-const {today, tomorrow} = HIGH_TEMPERATURES;
+//const {today, tomorrow} = HIGH_TEMPERATURES;
   
   
 
-const boxes = document.querySelectorAll('.box');
+//const boxes = document.querySelectorAll('.box');
 
 //ES5
 
@@ -203,7 +205,7 @@ for(var i = 0; i < boxesArrES5.length; i+=1)
 */
 
 //ES6
-
+/*
 const boxesArrES6 = Array.from(boxes);
 boxesArrES6.forEach( e => e.style.backgroundColor = 'dodgerblue');
 //alert("changed all boxes to blue");
@@ -280,7 +282,7 @@ console.log("twoSumV1 results = " , twoSumV1([2, 5, 5, 11], 10 ));
 
 console.log("twoSumV2 results = " , twoSumV2([2, 7, 11, 15], 9 ));
 console.log("twoSumV2 results = " , twoSumV2([2, 5, 5, 11], 10 ));
-
+*/
 // leetcode addTwoNumbers
 // how do you pass the two linkedLists into the function??
 /**
@@ -295,7 +297,8 @@ console.log("twoSumV2 results = " , twoSumV2([2, 5, 5, 11], 10 ));
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+/*
+ var addTwoNumbers = function(l1, l2) {
     console.log(l1);
     console.log(l1.next);
 };
@@ -322,11 +325,12 @@ var runningSumV2 = function(nums) {
 
 console.log("runningSumV2 returns ", runningSumV2([1,2,3]));
 console.log("runningSumV2 returns ", runningSumV2([1,2,3,4,5,6]));
-
+*/
 /**
  * @param {number[]} nums
  * @return {number}
  */
+/*
 var numIdenticalPairs = function(nums) {
     let good = 0;
     for (let i = 0; i < nums.length-1; i+=1)
@@ -345,7 +349,7 @@ var numIdenticalPairs = function(nums) {
 };
 
 console.log(numIdenticalPairs([1,2,3,1,1,3]));
-
+*/
 /**
  * Given the array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn].
 
@@ -355,6 +359,7 @@ Return the array in the form [x1,y1,x2,y2,...,xn,yn].
  * @param {number} n
  * @return {number[]}
  */
+/*
 var shuffle = function(nums, n) {
     let newArray = [];
     let j = n;
@@ -374,11 +379,11 @@ var shuffle = function(nums, n) {
 };
 
 console.log(shuffle([1,4,6,2,5,7], 3));
-
+*/
 /*Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
 
 For each kid check if there is a way to distribute extraCandies among the kids such that he or she can have the greatest number of candies among them. Notice that multiple kids can have the greatest number of candies.*/
-
+/*
 var kidsWithCandies = function(candies, extraCandies) {
     let yesOrNo = [];
     let max = Math.max(...candies);
@@ -393,23 +398,25 @@ var kidsWithCandies = function(candies, extraCandies) {
 };
 
 console.log(kidsWithCandies([1,2,3,4,5,1,2,3], 1));
-
+*/
 /**
  * Given a valid (IPv4) IP address, return a defanged version of that IP address. A defanged IP address replaces every period "." with "[.]"
  * @param {string} address
  * @return {string}
  */
+/*
 var defangIPaddr = function(address) {
     return address.replace(/\./g,"[.]");
 };
 
 console.log(defangIPaddr("1.5.196.101.8"));
-
+*/
 /**
  * Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
  * @param {number} num
  * @return {number}
  */
+/*
 var numberOfSteps  = function(num) {
     let i = 0;
     console.log("num is originally " + num);
@@ -422,7 +429,7 @@ var numberOfSteps  = function(num) {
 };
 
 console.log(numberOfSteps(8));
-
+*/
 /**
  * You're given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.
 
@@ -431,6 +438,7 @@ The letters in J are guaranteed distinct, and all characters in J and S are lett
  * @param {string} S
  * @return {number}
  */
+/*
 var numJewelsInStones = function(J, S) {
     let matches = 0;
     for(let currJ of J)
@@ -449,7 +457,7 @@ var numJewelsInStones = function(J, S) {
 };
 
 console.log("number of matches is " + numJewelsInStones("aA", "aAAbbb"));
-
+*/
 /**
  * Given the array nums, for each nums[i] find out how many numbers in the array are smaller than it. That is, for each nums[i] you have to count the number of valid j's such that j != i and nums[j] < nums[i]. Return the answer in an array.
  * @param {number[]} nums
@@ -479,3 +487,50 @@ var smallerNumbersThanCurrent = function(nums) {
 };
 
 console.log("how many smaller at each position is " + smallerNumbersThanCurrent([8,1,2,2,3]));
+/*
+// the global variable
+var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
+
+//This function should add a book to the list and return the list 
+// New parameters should come before the bookName one
+
+// Add your code below this line
+function add (bookList, bookName) {
+  console.log("\nadding: " + bookName);
+  let bookListCopy = [...bookList];
+  //let bookListCopy = bookList.concat();
+  //let bookListCopy = JSON.parse(JSON.stringify(bookList));
+  console.log("bookListCopy is: \"" + bookListCopy + "\" before adding");
+  bookListCopy.push(bookName);
+  console.log("bookListCopy is: \"" + bookListCopy + "\" after adding");
+  return bookListCopy;
+  // Add your code above this line
+}
+
+console.log(add(bookList, "hello"));
+*/
+/**
+ * Given a string s and an integer array indices of the same length. The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string. Return the shuffled string.
+ * @param {string} s
+ * @param {number[]} indices
+ * @return {string}
+ */
+/*
+var restoreString = function(s, indices) {
+    let newArr = [...s];
+    console.log(s);
+    console.log(newArr);
+    let newArr2 = [];
+    for (let i = 0; i < indices.length; i +=1)
+    {
+        newArr2[indices[i]] = newArr[i];
+        console.log(newArr2);
+    }
+
+    console.log(newArr2.toString());
+    console.log(newArr2.join(""));
+    return newArr2.join("");
+};
+
+console.log(restoreString("codeleet", [4,5,6,7,0,1,2,3]));
+*/
