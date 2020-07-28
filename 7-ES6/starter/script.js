@@ -468,17 +468,21 @@ var smallerNumbersThanCurrent = function(nums) {
     let matches = [];
     for(let i = 0; i < nums.length; i +=1)
     {
+        matches[i] = 0
         for(let j = 0; j < nums.length; j +=1)
         {
-            if(i === j) break;
+            console.log(`comparing ${nums[i]} to ${nums[j]}`);
+            //if(i === j) break;
 
-            else 
+            if(i !== j) 
             {
-                if (nums[i] < nums[j]) 
+                if (nums[j] < nums[i]) 
                 {
                     matches[i] +=1;
-                    console.log(nums[i] + " is less than " + nums[j]);
+                    console.log(nums[j] + " is less than " + nums[i]);
+                    console.log(`how many smaller at position ${i} is now ${matches[i]}`);
                     console.log("how many smaller at each position is now " + matches);
+                    console.log(`moving on to position ${i+1}`);
                 }
             }
         }
