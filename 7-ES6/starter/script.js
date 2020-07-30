@@ -463,6 +463,7 @@ console.log("number of matches is " + numJewelsInStones("aA", "aAAbbb"));
  * @param {number[]} nums
  * @return {number[]}
  */
+/*
 var smallerNumbersThanCurrent = function(nums) {
     console.log("original array is " + nums);
     let matches = [];
@@ -491,6 +492,7 @@ var smallerNumbersThanCurrent = function(nums) {
 };
 
 console.log("how many smaller at each position is " + smallerNumbersThanCurrent([8,1,2,2,3]));
+*/
 /*
 // the global variable
 var bookList = ["The Hound of the Baskervilles", "On The Electrodynamics of Moving Bodies", "Philosophiæ Naturalis Principia Mathematica", "Disquisitiones Arithmeticae"];
@@ -538,3 +540,69 @@ var restoreString = function(s, indices) {
 
 console.log(restoreString("codeleet", [4,5,6,7,0,1,2,3]));
 */
+
+/**
+ * Given an integer n and an integer start. Define an array nums where nums[i] = start + 2*i (0-indexed) and n == nums.length. Return the bitwise XOR of all elements of nums.
+ * @param {number} n
+ * @param {number} start
+ * @return {number}
+ */
+/*
+var xorOperation = function(n, start) {
+    
+};
+*/
+
+/**
+ * Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+ * @param {number} n
+ * @return {number}
+ */
+//subtractProductAndSums(45) returns 20 - 9 = 11
+/*
+var subtractProductAndSum = function(n) {
+    let arrOfDigits = Array.from(String(n), Number);
+    console.log(arrOfDigits);
+    let product = 1;
+    let sum = 0;
+
+    while(arrOfDigits.some((x) => x>=0))
+    {
+        let curr = arrOfDigits.pop();
+        product *= curr;
+        sum += curr;
+    }
+
+    return product - sum;
+};
+
+console.log(subtractProductAndSum(41));
+*/
+
+/**
+ * We are given a list nums of integers representing a list compressed with run-length encoding. Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0).  For each such pair, there are freq elements with value val concatenated in a sublist. Concatenate all the sublists from left to right to generate the decompressed list. Return the decompressed list.
+ * Given [3, a, 4, b, 2, c] returns [a, a, a, b, b, b, b, c, c]
+ * Given [1, 2, 3, 4] returns [2, 4, 4, 4]
+ * So, the first returns 3 of a, 4 of b, 2 of c. The second returns 1 of 2, 3 of 4.
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var decompressRLElist = function(nums) {
+    let list = [];
+    console.log(`original array is ${nums}`);
+    for (let i = 0; i < nums.length; i +=2)
+    {
+        console.log(`nums[i+1] = ${nums[i+1]}`);
+        let j = nums[i];
+        console.log(`going to push ${nums[i+1]} ${j} times`);
+        while (j>0)
+        {
+            console.log(`pushing ${nums[i+1]}`);
+            list.push(nums[i+1]);
+            --j;
+        }       
+    }
+    return list;
+};
+
+console.log(decompressRLElist([1, 2, 3, 4]));
