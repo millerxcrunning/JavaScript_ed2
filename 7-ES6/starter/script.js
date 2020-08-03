@@ -587,6 +587,8 @@ console.log(subtractProductAndSum(41));
  * @param {number[]} nums
  * @return {number[]}
  */
+
+ /*
 var decompressRLElist = function(nums) {
     let list = [];
     console.log(`original array is ${nums}`);
@@ -606,3 +608,30 @@ var decompressRLElist = function(nums) {
 };
 
 console.log(decompressRLElist([1, 2, 3, 4]));
+*/
+
+/**
+ * Given two arrays of integers nums and index. Your task is to create target array under the following rules: 
+ * Initially target array is empty. 
+ * From left to right read nums[i] and index[i], insert at index index[i] the value nums[i] in target array.
+ * Repeat the previous step until there are no elements to read in nums and index.
+Return the target array.
+ * @param {number[]} nums
+ * @param {number[]} index
+ * @return {number[]}
+ */
+var createTargetArray = function(nums, index) {
+    let target = [];
+    console.log(`nums array is ${nums} and index array is ${index}`);
+    for (let i = 0; i < nums.length; i++)
+    {
+        console.log(`iteration ${i}`);
+        console.log(`${nums[i]} is being pushed to position ${index[i]} of target array`);
+        target.splice(index[i], 0, nums[i]);
+        console.log(`target array is now ${target}`);
+    }
+
+    return target;
+};
+
+console.log(createTargetArray([0,1,2,3,4], [0,1,2,2,1]));
