@@ -479,3 +479,27 @@ var smallerNumbersThanCurrent = function(nums) {
 };
 
 console.log("how many smaller at each position is " + smallerNumbersThanCurrent([8,1,2,2,3]));
+
+var findNumbers = function(nums) {
+    console.log(`original array of numbers is ${nums}`);
+    let evenlyDivisible = [];
+    let numOfEvenlyDivisible = 0;
+    nums.forEach(e => {
+        console.log(e);
+        console.log(`is a ${typeof(e)}`);
+        let stringRepresentationOfE = String(e);
+        console.log(stringRepresentationOfE);
+        console.log(`is a ${typeof(stringRepresentationOfE)}`);
+        if (stringRepresentationOfE.length%2 === 0) 
+        {
+            evenlyDivisible.push(e);
+            numOfEvenlyDivisible+=1;
+            console.log(`length of ${e} is evenly divisible by 2`);
+
+        }
+    });
+    console.log(`evenly divisble numbers are ${evenlyDivisible}`);
+    return numOfEvenlyDivisible;
+};
+
+console.log(findNumbers([12,345,2,6,7896]));
