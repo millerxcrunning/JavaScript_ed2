@@ -644,5 +644,31 @@ console.log(createTargetArray([0,1,2,3,4], [0,1,2,2,1]));
  * @return {number}
  */
 var balancedStringSplit = function(s) {
-    
+    console.log(`string is ${s}`);
+    let counter = 0;
+    let matchingStrings = 0;
+    s.split("").forEach(e => 
+        {
+            if (e === "L")
+            {
+                console.log("found a L");
+                counter+=1;
+                console.log(`counter is now ${counter}`);
+            }
+            if (e === "R")
+            {
+                console.log("found a R");
+                counter-=1;
+                console.log(`counter is now ${counter}`);
+            }
+
+            if(counter === 0) 
+            {
+                matchingStrings +=1;
+                console.log("matching pair of balanced strings found");
+            }
+        });
+        return matchingStrings;
 };
+
+console.log(balancedStringSplit("RLRRRLLRLL"));
