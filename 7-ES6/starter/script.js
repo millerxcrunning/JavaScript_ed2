@@ -620,6 +620,7 @@ Return the target array.
  * @param {number[]} index
  * @return {number[]}
  */
+/*
 var createTargetArray = function(nums, index) {
     let target = [];
     console.log(`nums array is ${nums} and index array is ${index}`);
@@ -635,6 +636,7 @@ var createTargetArray = function(nums, index) {
 };
 
 console.log(createTargetArray([0,1,2,3,4], [0,1,2,2,1]));
+*/
 
 /**
  * Balanced strings are those who have equal quantity of 'L' and 'R' characters. 
@@ -643,6 +645,7 @@ console.log(createTargetArray([0,1,2,3,4], [0,1,2,2,1]));
  * @param {string} s
  * @return {number}
  */
+/*
 var balancedStringSplit = function(s) {
     console.log(`string is ${s}`);
     let counter = 0;
@@ -672,3 +675,24 @@ var balancedStringSplit = function(s) {
 };
 
 console.log(balancedStringSplit("RLRRRLLRLL"));
+*/
+
+/**
+ * Given an array nums of integers, return how many of them contain an even number of digits.
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findNumbers = function(nums) {
+    let even = 0;
+    nums.forEach( e=> {
+        console.log(`analyzing ${e} to see if ${e}.length % 2 === 0. Does it? e.length is ${(e.toString().length)} and e.length %2 is ${(e.toString().length % 2)}, ${((e.toString().length % 2) === 0)}`);
+        if((e.toString().length % 2) === 0)
+        {
+        even +=1;
+        }
+    })
+
+    return even;
+};
+
+console.log(findNumbers([12,345,2,6,7896]));
